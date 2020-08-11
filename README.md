@@ -117,8 +117,19 @@ interface SnowpackPluginMdxOptions {
    * @see https://sharp.pixelplumbing.com/api-output
    */
   images: {
+    /**
+     * Matches image patterns
+     */
     [globPattern: string]: {
+      /**
+       * Chains a method to sharp e.g.
+       * `sharp(FILE).sharpMethod()`
+       */
       [sharpMethod: string]: {
+        /**
+         * Adds options to the sharp method e.g.
+         * `sharp(FILE).sharpMethod(OPTIONS)`
+         */
         [sharpMethodOption: string]: any
       }
     }
