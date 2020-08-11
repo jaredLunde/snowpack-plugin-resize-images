@@ -1,6 +1,6 @@
 {
   "name": "snowpack-plugin-resize-images",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "homepage": "https://github.com/jaredLunde/snowpack-plugin-resize-images#readme",
   "repository": "github:jaredLunde/snowpack-plugin-resize-images",
   "bugs": "https://github.com/jaredLunde/snowpack-plugin-resize-images/issues",
