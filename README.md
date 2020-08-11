@@ -109,7 +109,7 @@ module.exports = {
 #### Plugin Options
 
 ```typescript
-type SnowpackPluginMdxOptions = {
+type SnowpackPluginResizeImagesOptions = {
   /**
    * This is a mapping of glob patterns and their sharp methods
    * and options. See the Sharp documentation for a complete list of
