@@ -35,7 +35,7 @@ npm i -D sharp snowpack-plugin-resize-images
 > build directory with the result of the Sharp processing. The original
 > image will be untouched.
 >
-> Lastly, this plugin will only resizes and transform images when the
+> Lastly, this plugin will only resize and transform images when the
 > `snowpack build` command is invoked. It will not run in `snowpack dev`.
 
 ````js
