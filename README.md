@@ -98,6 +98,12 @@ module.exports = {
           },
         },
         '**/placeholder/**': {
+          /**
+           * This is the same as:
+           * ```
+           * sharp(INPUT).blur(30)
+           * ```
+           */
           blur: [30],
         },
       },
@@ -125,13 +131,19 @@ type SnowpackPluginResizeImagesOptions = {
      * Chains a method to sharp e.g.
      * `sharp(FILE).sharpMethod()`
      */
-    [sharpMethod: string]: {
+    [sharpMethod: string]:
+      | {
+          /**
+           * Adds options to the sharp method e.g.
+           * `sharp(FILE).sharpMethod(OPTIONS)`
+           */
+          [sharpMethodOption: string]: any
+        }
       /**
-       * Adds options to the sharp method e.g.
-       * `sharp(FILE).sharpMethod(OPTIONS)`
+       * Add parameters to the sharp method e.g.
+       * sharp(FILE).sharpMethod(...PARAMETERS)
        */
-      [sharpMethodOption: string]: any
-    }
+      | any[]
   }
 }
 ```

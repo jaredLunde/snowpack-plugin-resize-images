@@ -68,8 +68,10 @@ module.exports = function plugin(
  */
 export type SnowpackPluginResizeImagesOptions = {
   [globPattern: string]: {
-    [sharpMethod: string]: {
-      [sharpMethodOption: string]: any
-    }
+    [sharpMethod: string]:
+      | {
+          [sharpMethodOption: string]: any
+        }
+      | any[]
   }
 }
