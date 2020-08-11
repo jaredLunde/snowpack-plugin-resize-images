@@ -33,8 +33,16 @@ module.exports = function plugin(
           const base = sharp(tmpFile)
 
           for (const method in methods) {
-            // eslint-disable-next-line @typescript-eslint/no-extra-semi
-            ;(base as any)[method](methods[method])
+            const methodOptions = methods[method]
+            if (Array.isArray(methodOptions)) {
+              // eslint-disable-next-line @typescript-eslint/no-extra-semi
+              ;(base as any)[method](...methodOptions)
+            } else {
+              if (Array.isArray(methodOptions)) {
+                // eslint-disable-next-line @typescript-eslint/no-extra-semi
+                ;(base as any)[method](methodOptions)
+              }
+            }
           }
 
           results.push(

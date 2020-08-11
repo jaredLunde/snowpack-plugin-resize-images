@@ -97,6 +97,9 @@ module.exports = {
             quality: 90,
           },
         },
+        '**/placeholder/**': {
+          blur: [30],
+        },
       },
     ],
   ],
