@@ -9,7 +9,7 @@ const glob = promisify(glob_)
 
 module.exports = function plugin(
   _: any,
-  {images}: SnowpackPluginResizeImagesOptions
+  images: SnowpackPluginResizeImagesOptions
 ) {
   return {
     name: 'snowpack-plugin-resize-images',
@@ -53,19 +53,17 @@ module.exports = function plugin(
   }
 }
 
-export interface SnowpackPluginResizeImagesOptions {
-  /**
-   * This is a mapping of glob patterns and their sharp methods
-   * and options. See the Sharp documentation for a complete list of
-   * methods and their respective options.
-   *
-   * @see https://sharp.pixelplumbing.com/api-output
-   */
-  images: {
-    [globPattern: string]: {
-      [sharpMethod: string]: {
-        [sharpMethodOption: string]: any
-      }
+/**
+ * This is a mapping of glob patterns and their sharp methods
+ * and options. See the Sharp documentation for a complete list of
+ * methods and their respective options.
+ *
+ * @see https://sharp.pixelplumbing.com/api-output
+ */
+export type SnowpackPluginResizeImagesOptions = {
+  [globPattern: string]: {
+    [sharpMethod: string]: {
+      [sharpMethodOption: string]: any
     }
   }
 }

@@ -38,77 +38,75 @@ npm i -D sharp snowpack-plugin-resize-images
 > Lastly, this plugin will only resizes and transform images when the
 > `snowpack build` command is invoked. It will not run in `snowpack dev`.
 
-````js
+````json
 // snowpack.config.json
 {
-  plugins: [
+  "plugins": [
     [
-      'snowpack-plugin-resize-images',
+      "snowpack-plugin-resize-images",
       /** @see "Plugin Options" below */
       {
-        images: {
+        /**
+         * Glob pattern
+         * @see https://github.com/isaacs/node-glob#glob-primer
+         */
+        "**/300x250/**": {
           /**
-           * Glob pattern
-           * @see https://github.com/isaacs/node-glob#glob-primer
+           * A Sharp method. This is the same as:
+           * ```
+           * sharp(input).resize({
+           *  width: 300,
+           *  height: 250,
+           *  options: {
+           *   fit: cover
+           *  }
+           * })
+           * ```
            */
-          '**/300x250/**': {
-            /**
-             * A Sharp method. This is the same as:
-             * ```
-             * sharp(input).resize({
-             *  width: 300,
-             *  height: 250,
-             *  options: {
-             *   fit: cover
-             *  }
-             * })
-             * ```
-             */
-            resize: {
-              // Sharp method options
-              width: 300,
-              height: 250,
-              options: {
-                fit: 'cover',
-              },
-            },
-            /**
-             * Another Sharp method. This is chained to the method before it.
-             * That is:
-             * ```
-             * sharp(input).resize({
-             *  width: 300,
-             *  height: 250,
-             *  options: {
-             *   fit: cover
-             *  }
-             * }).jpeg({
-             *  quality: 90
-             * })
-             * ```
-             */
-            jpeg: {
-              quality: 90,
-            },
+          "resize": {
+            // Sharp method options
+            "width": 300,
+            "height": 250,
+            "options": {
+              "fit": "cover"
+            }
           },
+          /**
+           * Another Sharp method. This is chained to the method before it.
+           * That is:
+           * ```
+           * sharp(input).resize({
+           *  width: 300,
+           *  height: 250,
+           *  options: {
+           *   fit: cover
+           *  }
+           * }).jpeg({
+           *  quality: 90
+           * })
+           * ```
+           */
+          "jpeg": {
+            "quality": 90
+          }
         },
         // Convert all images in the /webp/ directories
         // to webp with a quality of 90
-        '**/webp/**': {
-          webp: {
-            quality: 90,
-          },
-        },
-      },
-    ],
-  ],
+        "**/webp/**": {
+          "webp": {
+            "quality": 90
+          }
+        }
+      }
+    ]
+  ]
 }
 ````
 
 #### Plugin Options
 
 ```typescript
-interface SnowpackPluginMdxOptions {
+type SnowpackPluginMdxOptions = {
   /**
    * This is a mapping of glob patterns and their sharp methods
    * and options. See the Sharp documentation for a complete list of
@@ -116,22 +114,20 @@ interface SnowpackPluginMdxOptions {
    *
    * @see https://sharp.pixelplumbing.com/api-output
    */
-  images: {
+  /**
+   * Matches image patterns
+   */
+  [globPattern: string]: {
     /**
-     * Matches image patterns
+     * Chains a method to sharp e.g.
+     * `sharp(FILE).sharpMethod()`
      */
-    [globPattern: string]: {
+    [sharpMethod: string]: {
       /**
-       * Chains a method to sharp e.g.
-       * `sharp(FILE).sharpMethod()`
+       * Adds options to the sharp method e.g.
+       * `sharp(FILE).sharpMethod(OPTIONS)`
        */
-      [sharpMethod: string]: {
-        /**
-         * Adds options to the sharp method e.g.
-         * `sharp(FILE).sharpMethod(OPTIONS)`
-         */
-        [sharpMethodOption: string]: any
-      }
+      [sharpMethodOption: string]: any
     }
   }
 }
