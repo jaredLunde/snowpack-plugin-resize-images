@@ -38,10 +38,8 @@ module.exports = function plugin(
               // eslint-disable-next-line @typescript-eslint/no-extra-semi
               ;(base as any)[method](...methodOptions)
             } else {
-              if (Array.isArray(methodOptions)) {
-                // eslint-disable-next-line @typescript-eslint/no-extra-semi
-                ;(base as any)[method](methodOptions)
-              }
+              // eslint-disable-next-line @typescript-eslint/no-extra-semi
+              ;(base as any)[method](methodOptions)
             }
           }
 
