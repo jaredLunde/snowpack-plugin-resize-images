@@ -38,19 +38,19 @@ npm i -D sharp snowpack-plugin-resize-images
 > Lastly, this plugin will only resizes and transform images when the
 > `snowpack build` command is invoked. It will not run in `snowpack dev`.
 
-````json
-// snowpack.config.json
-{
-  "plugins": [
+````js
+// snowpack.config.js
+module.exports = {
+  plugins: [
     [
-      "snowpack-plugin-resize-images",
+      'snowpack-plugin-resize-images',
       /** @see "Plugin Options" below */
       {
         /**
          * Glob pattern
          * @see https://github.com/isaacs/node-glob#glob-primer
          */
-        "**/300x250/**": {
+        '**/300x250/**': {
           /**
            * A Sharp method. This is the same as:
            * ```
@@ -63,13 +63,13 @@ npm i -D sharp snowpack-plugin-resize-images
            * })
            * ```
            */
-          "resize": {
+          resize: {
             // Sharp method options
-            "width": 300,
-            "height": 250,
-            "options": {
-              "fit": "cover"
-            }
+            width: 300,
+            height: 250,
+            options: {
+              fit: 'cover',
+            },
           },
           /**
            * Another Sharp method. This is chained to the method before it.
@@ -86,20 +86,20 @@ npm i -D sharp snowpack-plugin-resize-images
            * })
            * ```
            */
-          "jpeg": {
-            "quality": 90
-          }
+          jpeg: {
+            quality: 90,
+          },
         },
         // Convert all images in the /webp/ directories
         // to webp with a quality of 90
-        "**/webp/**": {
-          "webp": {
-            "quality": 90
-          }
-        }
-      }
-    ]
-  ]
+        '**/webp/**': {
+          webp: {
+            quality: 90,
+          },
+        },
+      },
+    ],
+  ],
 }
 ````
 
