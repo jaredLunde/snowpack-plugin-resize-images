@@ -2,7 +2,7 @@
 
 # snowpack-plugin-resize-images
 
-> Resize your build images with [Sharp](https://sharp.pixelplumbing.com/api-constructor) and [Snowpack](https://snowpack.dev)
+> Resize your images with [Sharp](https://sharp.pixelplumbing.com/api-constructor) and [Snowpack](https://snowpack.dev)
 
 ```sh
 # 🔆 Note there is a peer dependency for Sharp
@@ -30,13 +30,11 @@ npm i -D sharp snowpack-plugin-resize-images
 
 ## Quick start
 
-> 🔆 This plugin resizes images in place and finds them based upon
-> glob patterns. That is, your build images will be overwritten in your
-> build directory with the result of the Sharp processing. The original
-> image will be untouched.
+> 🔆 This plugin resizes images based on matching glob patterns. Your
+> image originals will be unaffected as the processing only happens at
+> build/dev.
 >
-> Lastly, this plugin will only resize and transform images when the
-> `snowpack build` command is invoked. It will not run in `snowpack dev`.
+> This plugin runs in both `snowpack dev` and `snowpack build`
 
 ````js
 // snowpack.config.js
