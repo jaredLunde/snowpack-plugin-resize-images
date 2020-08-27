@@ -27,13 +27,11 @@ module.exports = function plugin(
               base[method](methodOptions)
             }
           }
-
-          if (base) {
-            return (await base.toBuffer()).toString('binary')
-          }
-
-          return contents
         }
+      }
+
+      if (base) {
+        return (await base.toBuffer()).toString('binary')
       }
 
       return contents
