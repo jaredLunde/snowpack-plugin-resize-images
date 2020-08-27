@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.5](https://github.com/jaredLunde/snowpack-plugin-resize-images/compare/v2.1.4...v2.1.5) (2020-08-27)
+
+### Bug Fixes
+
+- fix return value ([1df68a7](https://github.com/jaredLunde/snowpack-plugin-resize-images/commit/1df68a72c3cea9063416ee00692ef1c1c18b3017))
+
 ### [2.1.4](https://github.com/jaredLunde/snowpack-plugin-resize-images/compare/v2.1.3...v2.1.4) (2020-08-27)
 
 ### Bug Fixes
