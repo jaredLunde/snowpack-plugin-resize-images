@@ -15,12 +15,10 @@
     "sharp"
   ],
   "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
   "source": "src/index.ts",
   "types": "types/index.d.ts",
   "exports": {
     ".": {
-      "browser": "./dist/module/index.js",
       "import": "./dist/esm/index.mjs",
       "require": "./dist/main/index.js",
       "source": "./src/index.ts",
@@ -135,6 +133,7 @@
     "micromatch": "^4.0.2"
   },
   "peerDependencies": {
-    "sharp": ">=0.25.4"
+    "sharp": ">=0.25.4",
+    "snowpack": ">=2.9.0"
   }
 }

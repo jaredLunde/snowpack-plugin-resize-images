@@ -8,24 +8,31 @@ module.exports = function plugin(
 ) {
   return {
     name: 'snowpack-plugin-resize-images',
-    async transform({contents, filePath}: {contents: any; filePath: string}) {
+    async transform({contents, id: filePath}: {contents: any; id: string}) {
+      let base
+
       for (const globPattern in images) {
         if (micromatch.isMatch(filePath, globPattern)) {
-          const base = sharp(Buffer.from(contents, 'binary'))
+          base = base || sharp(Buffer.from(contents, 'binary'))
           const methods = images[globPattern]
 
           for (const method in methods) {
             const methodOptions = methods[method]
+
             if (Array.isArray(methodOptions)) {
-              // eslint-disable-next-line @typescript-eslint/no-extra-semi
-              ;(base as any)[method](...methodOptions)
+              // @ts-ignore
+              base[method](...methodOptions)
             } else {
-              // eslint-disable-next-line @typescript-eslint/no-extra-semi
-              ;(base as any)[method](methodOptions)
+              // @ts-ignore
+              base[method](methodOptions)
             }
           }
 
-          return (await base.toBuffer()).toString('binary')
+          if (base) {
+            return (await base.toBuffer()).toString('binary')
+          }
+
+          return contents
         }
       }
 
