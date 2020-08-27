@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.4](https://github.com/jaredLunde/snowpack-plugin-resize-images/compare/v2.1.3...v2.1.4) (2020-08-27)
+
+### Bug Fixes
+
+- use Snowpack "id" transform field ([161895d](https://github.com/jaredLunde/snowpack-plugin-resize-images/commit/161895dee0fde83264aecf578432206c029effb0))
+
 ### [2.1.3](https://github.com/jaredLunde/snowpack-plugin-resize-images/compare/v2.1.1...v2.1.3) (2020-08-27)
 
 ### [2.1.2](https://github.com/jaredLunde/snowpack-plugin-resize-images/compare/v2.1.1...v2.1.2) (2020-08-27)
