@@ -31,10 +31,10 @@ module.exports = function plugin(
       }
 
       if (base) {
-        return (await base.toBuffer()).toString('binary')
+        return {
+          result: await base.toBuffer(),
+        }
       }
-
-      return contents
     },
   }
 }
